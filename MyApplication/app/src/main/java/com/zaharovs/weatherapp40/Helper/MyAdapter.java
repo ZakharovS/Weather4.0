@@ -27,7 +27,7 @@ public class MyAdapter extends RealmBaseAdapter<RealmOneForecast> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder viewHolder;
-        if(convertView == null){
+        if (convertView == null) {
             convertView = inflater.inflate(R.layout.list_item, parent, false);
 
             viewHolder = new ViewHolder();
@@ -48,9 +48,15 @@ public class MyAdapter extends RealmBaseAdapter<RealmOneForecast> {
             String dateString = theForecast.getDtTxt();
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH);
             Date date = null;
-            try {date = dateFormat.parse(dateString);} catch (ParseException e) {e.printStackTrace();}
+            try {
+                date = dateFormat.parse(dateString);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
             Calendar cal = Calendar.getInstance();
-            if (date != null) {cal.setTime(date);}
+            if (date != null) {
+                cal.setTime(date);
+            }
 
             String week = cal.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.SHORT, Locale.ENGLISH);
             String day = String.valueOf(cal.get(Calendar.DAY_OF_MONTH));
@@ -87,7 +93,6 @@ public class MyAdapter extends RealmBaseAdapter<RealmOneForecast> {
         if (tRound > 0) {
             f = "+";
         }
-        return f + String.valueOf(tRound)+ " °C";
+        return f + String.valueOf(tRound) + " °C";
     }
-
 }

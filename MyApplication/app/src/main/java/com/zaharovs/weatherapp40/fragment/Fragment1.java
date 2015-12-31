@@ -29,8 +29,6 @@ public class Fragment1 extends Fragment {
     private ListView listView;
     private MyAdapter adapter;
 
-    public Fragment1() {}
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,5 +88,4 @@ public class Fragment1 extends Fragment {
         super.onStop();
         realm.close();
     }
-
 }

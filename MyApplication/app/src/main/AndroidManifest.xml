@@ -26,7 +26,7 @@
         <activity android:name=".activity.SecondActivity"></activity>
 
         <service
-            android:name=".services.WeatherService"
+            android:name=".services.WeatherUpdateService"
             android:exported="false" />
         <service
             android:name=".services.NotificationService"

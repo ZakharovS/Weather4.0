@@ -22,7 +22,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:paddingTop="@dimen/activity_vertical_margin"
-            android:text="WW"
             android:textColor="@color/colorforText"
             android:textSize="@dimen/font_size_30" />
 
@@ -32,7 +31,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:padding="4dp"
-            android:text="DD-MMM-YEAR"
             android:textColor="@color/colorforText"
             android:textSize="@dimen/font_size_20" />
 
@@ -42,7 +40,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:padding="4dp"
-            android:text="HH:MM"
             android:textColor="@color/colorforText"
             android:textSize="35sp" />
 
@@ -52,7 +49,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:padding="4dp"
-            android:text="Rain"
             android:textColor="@color/colorforText"
             android:textSize="25sp" />
 
@@ -76,7 +72,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="4dp"
-                android:text="CC"
                 android:textColor="@color/colorforText"
                 android:textSize="25sp" />
 
@@ -102,7 +97,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="4dp"
-                android:text="CC"
                 android:textColor="@color/colorforText"
                 android:textSize="25sp" />
 
@@ -128,7 +122,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="4dp"
-                android:text="H"
                 android:textColor="@color/colorforText"
                 android:textSize="25sp" />
 
@@ -154,7 +147,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="4dp"
-                android:text="S"
                 android:textColor="@color/colorforText"
                 android:textSize="25sp" />
 

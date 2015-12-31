@@ -1,6 +1,5 @@
 package com.zaharovs.weatherapp40.activity;
 
-import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
@@ -21,12 +20,6 @@ public class SecondActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
 
-//        if (getResources().getConfiguration().orientation
-//                == Configuration.ORIENTATION_LANDSCAPE) {
-//            finish();
-//            return;
-//        }
-
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_hw06_toolbar_b);
         setSupportActionBar(myToolbar);
         android.support.v7.app.ActionBar myActionBar = getSupportActionBar();
@@ -45,7 +38,7 @@ public class SecondActivity extends AppCompatActivity {
                     .commit();
         } else {
             position = savedInstanceState.getInt(POSITION_SELECTED);
-            Fragment2 oldFragmentItem =  (Fragment2) getSupportFragmentManager().findFragmentByTag("details");
+            Fragment2 oldFragmentItem = (Fragment2) getSupportFragmentManager().findFragmentByTag("details");
             oldFragmentItem.setItemContent(position);
         }
     }

@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.support.v7.app.NotificationCompat;
-import android.widget.Toast;
 
 import com.zaharovs.weatherapp40.R;
 import com.zaharovs.weatherapp40.Helper.RealmOneForecast;
@@ -28,28 +27,25 @@ import java.net.URL;
 import io.realm.Realm;
 import io.realm.RealmResults;
 
-public class WeatherService extends IntentService {
+public class WeatherUpdateService extends IntentService {
     private boolean isConnected;
     private NotificationManager mNotificationManager;
     private NotificationCompat.Builder builder;
 
-    public WeatherService()
-    {
-        super("WeatherService");
+    public WeatherUpdateService() {
+        super("WeatherUpdateService");
     }
 
     @Override
-public void onCreate()
-    {
+    public void onCreate() {
         super.onCreate();
-        isConnected = isNetworkConnected();
+        isConnected = isOnline();
         if (!isConnected) {
-            Toast.makeText(this, R.string.no_internet, Toast.LENGTH_LONG).show();
             stopSelf();
         }
     }
 
-    private boolean isNetworkConnected() {
+    private boolean isOnline() {
         ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
         return activeNetwork != null && activeNetwork.isConnectedOrConnecting();
@@ -94,12 +90,6 @@ public void onCreate()
         }
     }
 
-    @Override
-    public void onDestroy() {
-
-        super.onDestroy();
-    }
-
     private JSONArray getJSON() throws JSONException {
         HttpURLConnection urlConnection = null;
         BufferedReader reader = null;
@@ -131,8 +121,7 @@ public void onCreate()
             if (reader != null) {
                 try {
                     reader.close();
-                }
-                catch (final IOException e) {
+                } catch (final IOException e) {
                     e.printStackTrace();
                 }
             }
@@ -176,7 +165,15 @@ public void onCreate()
         realm.beginTransaction();
         RealmResults<RealmOneForecast> results = realm.where(RealmOneForecast.class).findAll();
         int extra = results.size() - 40;
-        for (int i = 0; i < extra; i++) { results.remove(0); }
+        for (int i = 0; i < extra; i++) {
+            results.remove(0);
+        }
         realm.commitTransaction();
+    }
+
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
     }
 }

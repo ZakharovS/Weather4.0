@@ -14,7 +14,7 @@ import com.zaharovs.weatherapp40.ClickInterface;
 import com.zaharovs.weatherapp40.fragment.Fragment2;
 import com.zaharovs.weatherapp40.fragment.Fragment1;
 import com.zaharovs.weatherapp40.services.NotificationService;
-import com.zaharovs.weatherapp40.services.WeatherService;
+import com.zaharovs.weatherapp40.services.WeatherUpdateService;
 
 public class MainActivity extends AppCompatActivity implements ClickInterface {
 
@@ -27,7 +27,6 @@ public class MainActivity extends AppCompatActivity implements ClickInterface {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
-//        isConnected = isNetworkConnected();
         isConnected = isOnline();
 
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
@@ -47,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements ClickInterface {
             Intent notification = new Intent(this, NotificationService.class);
             this.startService(notification);
 
-            Intent intentUpdate = new Intent(this, WeatherService.class);
+            Intent intentUpdate = new Intent(this, WeatherUpdateService.class);
             this.startService(intentUpdate);
         }
 
@@ -92,27 +91,11 @@ public class MainActivity extends AppCompatActivity implements ClickInterface {
         savedInstanceState.putInt(POSITION_SELECTED, position);
         super.onSaveInstanceState(savedInstanceState);
     }
-//
-//    private boolean withDetails() {
-//        boolean with_Details = true;
-//        with_Details = (findViewById(R.id.details_container) != null);
-//        return (with_Details);
-//    }
-
-//    public boolean isNetworkConnected() {
-//        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-//        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
-//        return activeNetwork != null && activeNetwork.isConnectedOrConnecting();
-//    }
-
 
     public boolean isOnline() {
-        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
-        if (networkInfo != null && networkInfo.isConnectedOrConnecting()) {
-            return true;
-        } else
-            return false;
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        return (activeNetwork != null && activeNetwork.isConnectedOrConnecting());
     }
 
 }

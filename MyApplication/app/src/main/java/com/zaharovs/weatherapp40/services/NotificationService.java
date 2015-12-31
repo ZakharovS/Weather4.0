@@ -22,12 +22,10 @@ public class NotificationService extends Service{
     private NotificationManager mNotificationManager;
     private NotificationCompat.Builder builder;
 
-    public NotificationService(){}
-
     @Override
     public void onCreate() {
         super.onCreate();
-        Intent intentDownload = new Intent(this, WeatherService.class);
+        Intent intentDownload = new Intent(this, WeatherUpdateService.class);
         intentDownload.putExtra(FROM_NOTIFICATION, true);
         PendingIntent pendingIntentDownLoad = PendingIntent
                 .getService(this, 0, intentDownload, PendingIntent.FLAG_UPDATE_CURRENT);
@@ -39,10 +37,10 @@ public class NotificationService extends Service{
         builder = (NotificationCompat.Builder) new NotificationCompat.Builder(this)
                 .setSmallIcon(R.mipmap.ic_launcher)
                 .setContentTitle(this.getResources().getString(R.string.app_name))
-                .setContentText("Update11111")
+                .setContentText("Start App")
                 .setContentIntent(pendingIntentApp)
                 .setAutoCancel(true)
-                .addAction(R.drawable.ic_sun, "Update2222", pendingIntentDownLoad);
+                .addAction(R.drawable.ic_sun, "Update", pendingIntentDownLoad);
         mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
         timer = new Timer();
