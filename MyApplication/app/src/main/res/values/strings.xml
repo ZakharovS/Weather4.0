@@ -1,8 +1,12 @@
 <resources>
-    <string name="app_name">WeatherApp4.0</string>
+    <string name="app_name">WeatherApp 4.0</string>
     <string name="dd_mmm_yyyy">%1$s - %2$s - %3$s</string>
     <string name="icon_url">http://openweathermap.org/img/w/%1$s.png</string>
     <string name="openweathermap_url"><![CDATA[http://api.openweathermap.org/data/2.5/forecast/city?id=710791&mode=json&units=metric&appid=8a3ea4b3ab2bc27e4a85f3f1020301a6]]></string>
     <string name="no_internet_no_db">No Internet connection available and local DB is empty</string>
     <string name="no_internet">No Internet connection available, restoring from local DB ...</string>
+    <string name="WindSpeed">Wind speed (m/s) :</string>
+    <string name="temperature_min">t°(C) min:</string>
+    <string name="temperature_max">t°(C) max:</string>
+    <string name="humidity">Humidity (%):</string>
 </resources>

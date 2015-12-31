@@ -1,6 +1,8 @@
 package com.zaharovs.weatherapp40.fragment;
 
 import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
@@ -88,4 +90,5 @@ public class Fragment1 extends Fragment {
         super.onStop();
         realm.close();
     }
+
 }

@@ -39,10 +39,10 @@ public class NotificationService extends Service{
         builder = (NotificationCompat.Builder) new NotificationCompat.Builder(this)
                 .setSmallIcon(R.mipmap.ic_launcher)
                 .setContentTitle(this.getResources().getString(R.string.app_name))
-                .setContentText("Update")
+                .setContentText("Update11111")
                 .setContentIntent(pendingIntentApp)
                 .setAutoCancel(true)
-                .addAction(R.drawable.ic_sun, "Update", pendingIntentDownLoad);
+                .addAction(R.drawable.ic_sun, "Update2222", pendingIntentDownLoad);
         mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
         timer = new Timer();

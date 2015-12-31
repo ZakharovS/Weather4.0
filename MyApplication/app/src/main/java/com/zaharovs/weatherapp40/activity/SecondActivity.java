@@ -21,11 +21,11 @@ public class SecondActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
 
-        if (getResources().getConfiguration().orientation
-                == Configuration.ORIENTATION_LANDSCAPE) {
-            finish();
-            return;
-        }
+//        if (getResources().getConfiguration().orientation
+//                == Configuration.ORIENTATION_LANDSCAPE) {
+//            finish();
+//            return;
+//        }
 
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_hw06_toolbar_b);
         setSupportActionBar(myToolbar);

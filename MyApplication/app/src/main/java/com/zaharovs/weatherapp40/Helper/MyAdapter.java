@@ -84,8 +84,10 @@ public class MyAdapter extends RealmBaseAdapter<RealmOneForecast> {
     private String temperatureFormat(double t) {
         String f = "";
         long tRound = Math.round(t);
-        if (tRound > 0) { f = "+"; }
-        return f + String.valueOf(tRound);
+        if (tRound > 0) {
+            f = "+";
+        }
+        return f + String.valueOf(tRound)+ " °C";
     }
 
 }

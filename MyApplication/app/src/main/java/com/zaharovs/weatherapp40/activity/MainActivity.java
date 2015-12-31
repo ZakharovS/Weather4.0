@@ -27,7 +27,8 @@ public class MainActivity extends AppCompatActivity implements ClickInterface {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
-        isConnected = isNetworkConnected();
+//        isConnected = isNetworkConnected();
+        isConnected = isOnline();
 
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
@@ -50,7 +51,7 @@ public class MainActivity extends AppCompatActivity implements ClickInterface {
             this.startService(intentUpdate);
         }
 
-        if (withDetails()) {
+        if (findViewById(R.id.details_container) != null) {
             Fragment2 mDetails = new Fragment2();
             if (savedInstanceState != null) {
                 position = savedInstanceState.getInt(POSITION_SELECTED);
@@ -75,7 +76,7 @@ public class MainActivity extends AppCompatActivity implements ClickInterface {
         Fragment2 newFragmentItem = new Fragment2();
         newFragmentItem.setItemContent(position);
         this.position = position;
-        if (withDetails()) {
+        if (findViewById(R.id.details_container) != null) {
             manager.beginTransaction()
                     .replace(R.id.details_container, newFragmentItem)
                     .commit();
@@ -91,16 +92,27 @@ public class MainActivity extends AppCompatActivity implements ClickInterface {
         savedInstanceState.putInt(POSITION_SELECTED, position);
         super.onSaveInstanceState(savedInstanceState);
     }
+//
+//    private boolean withDetails() {
+//        boolean with_Details = true;
+//        with_Details = (findViewById(R.id.details_container) != null);
+//        return (with_Details);
+//    }
 
-    private boolean withDetails() {
-        boolean with_Details = true;
-        with_Details = (findViewById(R.id.details_container) != null);
-        return (with_Details);
+//    public boolean isNetworkConnected() {
+//        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+//        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+//        return activeNetwork != null && activeNetwork.isConnectedOrConnecting();
+//    }
+
+
+    public boolean isOnline() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+        if (networkInfo != null && networkInfo.isConnectedOrConnecting()) {
+            return true;
+        } else
+            return false;
     }
 
-    public boolean isNetworkConnected() {
-        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
-        return activeNetwork != null && activeNetwork.isConnectedOrConnecting();
-    }
 }
